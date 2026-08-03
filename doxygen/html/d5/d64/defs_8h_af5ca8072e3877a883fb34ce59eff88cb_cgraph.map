@@ -1,0 +1,5 @@
+<map id="initsleeplock" name="initsleeplock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,110,33"/>
+<area shape="rect" id="Node000002" href="$d3/d2d/spinlock_8c.html#abda07b4a007b2e888d9d783920460b89" title=" " alt="" coords="158,5,227,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,17,145,19,140,19,110,22"/>
+</map>

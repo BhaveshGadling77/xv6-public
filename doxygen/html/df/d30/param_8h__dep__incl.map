@@ -1,0 +1,51 @@
+<map id="param.h" name="param.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="988,5,1064,33"/>
+<area shape="rect" id="Node000002" href="$dc/de6/bio_8c.html" title=" " alt="" coords="5,81,58,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="970,23,522,44,261,61,152,72,71,84,59,86,58,81,70,78,152,66,260,56,522,38,975,21"/>
+<area shape="rect" id="Node000003" href="$d0/d56/console_8c.html" title=" " alt="" coords="82,81,165,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="970,22,834,28,637,38,409,56,177,84,166,86,165,80,176,78,408,50,636,33,834,23,976,21"/>
+<area shape="rect" id="Node000004" href="$df/dc9/exec_8c.html" title=" " alt="" coords="188,81,251,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="970,21,846,27,670,36,467,54,263,84,251,86,251,81,262,78,466,49,669,31,846,22,975,21"/>
+<area shape="rect" id="Node000005" href="$d6/d13/file_8c.html" title=" " alt="" coords="275,81,327,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="970,21,857,27,699,36,520,54,339,84,328,86,327,81,338,78,519,49,699,31,857,22,975,21"/>
+<area shape="rect" id="Node000006" href="$d2/d5a/fs_8c.html" title=" " alt="" coords="351,81,395,109"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="970,21,867,27,726,37,567,54,407,84,396,87,395,81,406,78,566,49,726,31,867,22,975,21"/>
+<area shape="rect" id="Node000007" href="$d9/d2f/ide_8c.html" title=" " alt="" coords="419,81,471,109"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="970,23,758,42,621,59,484,84,472,87,471,82,483,78,620,54,758,37,976,23"/>
+<area shape="rect" id="Node000008" href="$d4/def/kalloc_8c.html" title=" " alt="" coords="495,81,565,109"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="975,25,797,48,687,64,577,84,566,86,565,81,576,78,686,59,796,43,970,26"/>
+<area shape="rect" id="Node000009" href="$dc/df6/lapic_8c.html" title=" " alt="" coords="589,81,652,109"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="976,27,833,51,664,84,653,86,652,81,663,78,832,46,971,28"/>
+<area shape="rect" id="Node000010" href="$d7/df8/log_8c.html" title=" " alt="" coords="676,81,728,109"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="976,29,866,54,740,84,729,87,729,81,739,78,864,49,971,30"/>
+<area shape="rect" id="Node000011" href="$d0/d29/main_8c.html" title=" " alt="" coords="752,81,818,109"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="976,36,818,86,817,81,971,37"/>
+<area shape="rect" id="Node000012" href="$da/d9b/memide_8c.html" title=" " alt="" coords="842,81,928,109"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="990,40,911,83,909,78,985,41"/>
+<area shape="rect" id="Node000013" href="$d7/d1f/mkfs_8c.html" title=" " alt="" coords="952,81,1018,109"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1014,46,994,83,991,78,1009,48"/>
+<area shape="rect" id="Node000014" href="$dd/d06/mp_8c.html" title=" " alt="" coords="1042,81,1096,109"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1043,44,1064,82,1059,79,1040,49"/>
+<area shape="rect" id="Node000015" href="$d1/d47/pipe_8c.html" title=" " alt="" coords="1120,81,1180,109"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1062,39,1131,81,1126,80,1061,44"/>
+<area shape="rect" id="Node000016" href="$d3/dda/proc_8c.html" title=" " alt="" coords="1204,81,1264,109"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1078,36,1206,83,1201,82,1077,41"/>
+<area shape="rect" id="Node000017" href="$d8/dd1/sleeplock_8c.html" title=" " alt="" coords="1288,81,1383,109"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="1079,30,1291,82,1285,82,1079,36"/>
+<area shape="rect" id="Node000018" href="$d3/d2d/spinlock_8c.html" title=" " alt="" coords="1407,81,1493,109"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="1079,26,1222,48,1395,78,1409,84,1404,83,1394,84,1221,53,1079,31"/>
+<area shape="rect" id="Node000019" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="1517,81,1594,109"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="1079,23,1268,43,1386,59,1505,78,1519,84,1514,83,1504,84,1386,64,1267,48,1079,28"/>
+<area shape="rect" id="Node000020" href="$d1/d14/sysfile_8c.html" title=" " alt="" coords="1618,81,1693,109"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="1079,21,1309,39,1457,56,1607,78,1621,84,1615,83,1606,84,1457,61,1309,44,1079,26"/>
+<area shape="rect" id="Node000021" href="$dd/d35/sysproc_8c.html" title=" " alt="" coords="1717,81,1799,109"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="1079,20,1349,37,1526,54,1705,78,1719,83,1714,83,1704,84,1525,60,1348,43,1079,25"/>
+<area shape="rect" id="Node000022" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="1824,81,1882,109"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="1079,18,1209,21,1391,29,1601,48,1708,61,1812,78,1826,84,1821,83,1811,84,1707,66,1600,53,1391,35,1209,26,1079,23"/>
+<area shape="rect" id="Node000023" href="$d1/d87/uart_8c.html" title=" " alt="" coords="1906,81,1965,109"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="1079,17,1221,19,1424,27,1658,45,1778,60,1895,78,1909,84,1903,83,1894,84,1777,65,1657,50,1423,32,1221,24,1079,23"/>
+<area shape="rect" id="Node000024" href="$df/d5d/umalloc_8c.html" title=" " alt="" coords="1989,81,2074,109"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="1080,18,1233,21,1456,30,1714,48,1977,78,1992,83,1987,83,1976,84,1714,54,1455,36,1233,27,1080,24"/>
+<area shape="rect" id="Node000025" href="$de/de9/vm_8c.html" title=" " alt="" coords="2098,81,2152,109"/>
+<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="1080,19,1579,37,1873,54,1995,65,2087,78,2100,84,2095,83,2086,84,1994,71,1872,60,1579,42,1080,24"/>
+</map>
