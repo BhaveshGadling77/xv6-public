@@ -30,8 +30,6 @@ int main(int argc, char *argv[]) {
 	int src = open(argv[1], 0);
 	int dest = open(argv[2], O_CREATE | O_WRONLY);
 
-	printf(1, "src = %d\n", src);
-	printf(1, "dest = %d\n", dest);
 	cp(src, dest);
     exit();
 }
