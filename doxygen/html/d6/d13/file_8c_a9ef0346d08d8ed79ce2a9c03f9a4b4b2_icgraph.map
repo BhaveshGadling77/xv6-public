@@ -1,9 +1,0 @@
-<map id="filedup" name="filedup">
-<area shape="rect" id="Node000001" title=" " alt="" coords="252,32,317,60"/>
-<area shape="rect" id="Node000002" href="$d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="143,5,190,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,35,191,27,191,22,240,35"/>
-<area shape="rect" id="Node000004" href="$d1/d14/sysfile_8c.html#a8f8b9e2d98e8b444f23a39ae8992feff" title=" " alt="" coords="130,57,204,85"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="240,56,205,66,204,61,234,56"/>
-<area shape="rect" id="Node000003" href="$dd/d35/sysproc_8c.html#a3b05102e512b34446a54334f916ba5cd" title=" " alt="" coords="5,5,82,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,21,83,22,82,17,130,18"/>
-</map>

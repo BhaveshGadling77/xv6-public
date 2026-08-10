@@ -1,9 +1,0 @@
-<map id="waitdisk" name="waitdisk">
-<area shape="rect" id="Node000001" title=" " alt="" coords="383,5,460,33"/>
-<area shape="rect" id="Node000002" href="$d5/dfc/bootmain_8c.html#ae7ef59ffa082283b72c54e43b7a16351" title=" " alt="" coords="258,5,335,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,19,336,22,336,17,370,19"/>
-<area shape="rect" id="Node000003" href="$d5/dfc/bootmain_8c.html#af8097ce47ae21ccad1b0afd6f48ef62c" title=" " alt="" coords="137,5,210,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,19,211,22,210,17,245,19"/>
-<area shape="rect" id="Node000004" href="$d5/dfc/bootmain_8c.html#a0d198d492591e1b70a8a12109408a7e4" title=" " alt="" coords="5,5,89,33"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="118,20,89,22,89,17,124,19"/>
-</map>

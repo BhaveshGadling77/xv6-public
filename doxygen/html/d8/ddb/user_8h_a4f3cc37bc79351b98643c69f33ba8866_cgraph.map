@@ -1,9 +1,0 @@
-<map id="stat" name="stat">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,57,52,85"/>
-<area shape="rect" id="Node000002" href="$d8/ddb/user_8h.html#ae152484c890a24e4d9b4980e7b965be0" title=" " alt="" coords="100,5,155,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,57,88,39,85,43,54,61"/>
-<area shape="rect" id="Node000003" href="$d8/ddb/user_8h.html#a649aa32ddc94f9b64c3fa27dc9724459" title=" " alt="" coords="102,57,153,85"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="51,69,88,69,84,73,53,74"/>
-<area shape="rect" id="Node000004" href="$d8/ddb/user_8h.html#a2c4414339f388561554c2deab11a1a07" title=" " alt="" coords="101,109,154,137"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="53,81,89,101,84,103,52,86"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="filealloc" name="filealloc">
-<area shape="rect" id="Node000001" title=" " alt="" coords="262,32,334,60"/>
-<area shape="rect" id="Node000002" href="$d1/d47/pipe_8c.html#a9d6f0c526148e6002b6776619c7563e6" title=" " alt="" coords="133,5,213,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,35,213,30,214,25,249,35"/>
-<area shape="rect" id="Node000004" href="$d1/d14/sysfile_8c.html#a74e45efc661ca17c068bc283b3842e6d" title=" " alt="" coords="132,57,214,85"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="249,56,215,66,214,60,244,57"/>
-<area shape="rect" id="Node000003" href="$d1/d14/sysfile_8c.html#a9a70db941def46ec25939e6c2d30e399" title=" " alt="" coords="5,5,84,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,20,85,22,84,17,119,18"/>
-</map>

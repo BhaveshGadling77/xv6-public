@@ -24,38 +24,20 @@
 */
 var NAVTREE =
 [
-  [ "XV6", "index.html", [
+  [ "My Project", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
-        [ "Enumerator", "functions_eval.html", null ]
-      ] ]
+      [ "Class Index", "classes.html", null ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", "globals_func" ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
-      ] ]
+      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"d5/d33/param_8h.html#aa564a41c8409694da49b0badf2bb2853",
-"d7/da8/structelfhdr.html#a2f1e0957c83938630ef0ed074830df03",
-"db/dfa/structdinode.html#a705729b3a39c10c0ba6927fc5e4e0563",
-"df/d05/structtrapframe.html#abc7f81b0a6a91d13e9fefe171b0a7d12"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
