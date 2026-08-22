@@ -447,3 +447,49 @@ int sys_hello(){
 	cprintf("hello\n");
 	return 0;
 }
+
+int sys_lseek() {
+  int fd, offset, whence, newoff;;
+  struct file *f;
+
+  if(argfd(0, &fd, &f) < 0)
+    return -1;
+
+  if(argint(1, &offset) < 0)
+    return -1;
+
+  if(argint(2, &whence) < 0)
+    return -1;
+  //lseek is not supported on pipes.
+  if(f->type == FD_PIPE)
+    return -1;
+
+  switch(whence){
+  case SEEK_SET:
+    newoff = offset;
+    break;
+
+  case SEEK_CUR:
+    newoff = f->off + offset;
+    break;
+
+  case SEEK_END:
+    newoff = f->ip->size + offset;
+    break;
+
+  default:
+    return -1;
+  }
+
+  //file offset cannot be negative.
+  if(newoff < 0)
+    return -1;
+
+  //offsets beyond file size are not required.
+  if(newoff > f->ip->size)
+    return -1;
+
+  f->off = newoff;
+
+  return newoff;  
+}
