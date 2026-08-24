@@ -1,0 +1,62 @@
+\doxysection{fs.\+h}
+\hypertarget{fs_8h_source}{}\label{fs_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ On-\/disk\ file\ system\ format.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Both\ the\ kernel\ and\ user\ programs\ use\ this\ header\ file.}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ ROOTINO\ 1\ \ }\textcolor{comment}{//\ root\ i-\/number}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ BSIZE\ 512\ \ }\textcolor{comment}{//\ block\ size}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Disk\ layout:}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ [\ boot\ block\ |\ super\ block\ |\ log\ |\ inode\ blocks\ |}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free\ bit\ map\ |\ data\ blocks]}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ mkfs\ computes\ the\ super\ block\ and\ builds\ an\ initial\ file\ system.\ The}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ super\ block\ describes\ the\ disk\ layout:}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsuperblock}{superblock}}\ \{}
+\DoxyCodeLine{00015\ \ \ uint\ size;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Size\ of\ file\ system\ image\ (blocks)}}
+\DoxyCodeLine{00016\ \ \ uint\ nblocks;\ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ data\ blocks}}
+\DoxyCodeLine{00017\ \ \ uint\ ninodes;\ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ inodes.}}
+\DoxyCodeLine{00018\ \ \ uint\ nlog;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ log\ blocks}}
+\DoxyCodeLine{00019\ \ \ uint\ logstart;\ \ \ \ \ \textcolor{comment}{//\ Block\ number\ of\ first\ log\ block}}
+\DoxyCodeLine{00020\ \ \ uint\ inodestart;\ \ \ \textcolor{comment}{//\ Block\ number\ of\ first\ inode\ block}}
+\DoxyCodeLine{00021\ \ \ uint\ bmapstart;\ \ \ \ \textcolor{comment}{//\ Block\ number\ of\ first\ free\ map\ block}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ NDIRECT\ 12}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ NINDIRECT\ (BSIZE\ /\ sizeof(uint))}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ MAXFILE\ (NDIRECT\ +\ NINDIRECT)}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ On-\/disk\ inode\ structure}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdinode}{dinode}}\ \{}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{short}\ type;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ File\ type}}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{short}\ major;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Major\ device\ number\ (T\_DEV\ only)}}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{short}\ minor;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Minor\ device\ number\ (T\_DEV\ only)}}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{short}\ nlink;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ links\ to\ inode\ in\ file\ system}}
+\DoxyCodeLine{00034\ \ \ uint\ size;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Size\ of\ file\ (bytes)}}
+\DoxyCodeLine{00035\ \ \ uint\ addrs[NDIRECT+1];\ \ \ \textcolor{comment}{//\ Data\ block\ addresses}}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Inodes\ per\ block.}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ IPB\ \ \ \ \ \ \ \ \ \ \ (BSIZE\ /\ sizeof(struct\ dinode))}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Block\ containing\ inode\ i}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ IBLOCK(i,\ sb)\ \ \ \ \ ((i)\ /\ IPB\ +\ sb.inodestart)}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ Bitmap\ bits\ per\ block}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ BPB\ \ \ \ \ \ \ \ \ \ \ (BSIZE*8)}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ Block\ of\ free\ map\ containing\ bit\ for\ block\ b}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ BBLOCK(b,\ sb)\ (b/BPB\ +\ sb.bmapstart)}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ Directory\ is\ a\ file\ containing\ a\ sequence\ of\ dirent\ structures.}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ DIRSIZ\ 14}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdirent}{dirent}}\ \{}
+\DoxyCodeLine{00054\ \ \ ushort\ inum;}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{char}\ name[DIRSIZ];}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+
+\end{DoxyCode}

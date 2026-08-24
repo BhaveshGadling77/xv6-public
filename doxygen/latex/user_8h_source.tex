@@ -1,0 +1,44 @@
+\doxysection{user.\+h}
+\hypertarget{user_8h_source}{}\label{user_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{struct\ }stat;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrtcdate}{rtcdate}};}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ system\ calls}}
+\DoxyCodeLine{00005\ \textcolor{keywordtype}{int}\ fork(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{int}\ exit(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((noreturn));}
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{int}\ wait(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpipe}{pipe}}(\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{int}\ write(\textcolor{keywordtype}{int},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{int}\ read(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}*,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{int}\ close(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{int}\ kill(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{int}\ exec(\textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{char}**);}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{int}\ open(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{int}\ mknod(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{short},\ \textcolor{keywordtype}{short});}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{int}\ unlink(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{int}\ fstat(\textcolor{keywordtype}{int}\ fd,\ \textcolor{keyword}{struct}\ stat*);}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{int}\ link(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{int}\ mkdir(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ chdir(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{int}\ dup(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ getpid(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{char}*\ sbrk(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ sleep(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{int}\ uptime(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ ulib.c}}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ stat(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keyword}{struct}\ stat*);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{char}*\ strcpy(\textcolor{keywordtype}{char}*,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ *memmove(\textcolor{keywordtype}{void}*,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{char}*\ strchr(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{int}\ strcmp(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ printf(\textcolor{keywordtype}{int},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ ...);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{char}*\ gets(\textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{int}\ max);}
+\DoxyCodeLine{00035\ uint\ strlen(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}*\ memset(\textcolor{keywordtype}{void}*,\ \textcolor{keywordtype}{int},\ uint);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}*\ malloc(uint);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ free(\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ atoi(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+
+\end{DoxyCode}

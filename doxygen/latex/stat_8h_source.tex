@@ -1,0 +1,16 @@
+\doxysection{stat.\+h}
+\hypertarget{stat_8h_source}{}\label{stat_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#define\ T\_DIR\ \ 1\ \ \ }\textcolor{comment}{//\ Directory}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ T\_FILE\ 2\ \ \ }\textcolor{comment}{//\ File}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ T\_DEV\ \ 3\ \ \ }\textcolor{comment}{//\ Device}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstat}{stat}}\ \{}
+\DoxyCodeLine{00006\ \ \ \textcolor{keywordtype}{short}\ type;\ \ \textcolor{comment}{//\ Type\ of\ file}}
+\DoxyCodeLine{00007\ \ \ \textcolor{keywordtype}{int}\ dev;\ \ \ \ \ \textcolor{comment}{//\ File\ system's\ disk\ device}}
+\DoxyCodeLine{00008\ \ \ uint\ ino;\ \ \ \ \textcolor{comment}{//\ Inode\ number}}
+\DoxyCodeLine{00009\ \ \ \textcolor{keywordtype}{short}\ nlink;\ \textcolor{comment}{//\ Number\ of\ links\ to\ file}}
+\DoxyCodeLine{00010\ \ \ uint\ size;\ \ \ \textcolor{comment}{//\ Size\ of\ file\ in\ bytes}}
+\DoxyCodeLine{00011\ \};}
+
+\end{DoxyCode}

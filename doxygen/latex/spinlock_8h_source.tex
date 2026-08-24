@@ -1,0 +1,16 @@
+\doxysection{spinlock.\+h}
+\hypertarget{spinlock_8h_source}{}\label{spinlock_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Mutual\ exclusion\ lock.}}
+\DoxyCodeLine{00002\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structspinlock}{spinlock}}\ \{}
+\DoxyCodeLine{00003\ \ \ uint\ locked;\ \ \ \ \ \ \ \textcolor{comment}{//\ Is\ the\ lock\ held?}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \ \ \textcolor{comment}{//\ For\ debugging:}}
+\DoxyCodeLine{00006\ \ \ \textcolor{keywordtype}{char}\ *name;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Name\ of\ lock.}}
+\DoxyCodeLine{00007\ \ \ \textcolor{keyword}{struct\ }cpu\ *cpu;\ \ \ \textcolor{comment}{//\ The\ cpu\ holding\ the\ lock.}}
+\DoxyCodeLine{00008\ \ \ uint\ pcs[10];\ \ \ \ \ \ \textcolor{comment}{//\ The\ call\ stack\ (an\ array\ of\ program\ counters)}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ that\ locked\ the\ lock.}}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+
+\end{DoxyCode}

@@ -1,0 +1,178 @@
+diff --git a/Makefile b/Makefile
+index c888cfa..ebb1040 100644
+--- a/Makefile
++++ b/Makefile
+@@ -184,6 +184,7 @@ UPROGS=\
+ 	_wc\
+ 	_zombie\
+ 	_tryhello\
++	_trylseek\
+ 
+ fs.img: mkfs README $(UPROGS)
+ 	./mkfs fs.img README $(UPROGS)
+diff --git a/fcntl.h b/fcntl.h
+index d565483..900859a 100644
+--- a/fcntl.h
++++ b/fcntl.h
+@@ -2,3 +2,6 @@
+ #define O_WRONLY  0x001
+ #define O_RDWR    0x002
+ #define O_CREATE  0x200
++#define SEEK_SET 0
++#define SEEK_CUR 1
++#define SEEK_END 2
+\ No newline at end of file
+diff --git a/syscall.c b/syscall.c
+index 0af1efd..ed303fa 100644
+--- a/syscall.c
++++ b/syscall.c
+@@ -104,6 +104,7 @@ extern int sys_wait(void);
+ extern int sys_write(void);
+ extern int sys_uptime(void);
+ extern int sys_hello(void);
++extern int sys_lseek(void);
+ 
+ static int (*syscalls[])(void) = {
+ [SYS_fork]    sys_fork,
+@@ -127,7 +128,8 @@ static int (*syscalls[])(void) = {
+ [SYS_link]    sys_link,
+ [SYS_mkdir]   sys_mkdir,
+ [SYS_close]   sys_close,
+-[SYS_hello]   sys_hello
++[SYS_hello]   sys_hello,
++[SYS_lseek]   sys_lseek
+ };
+ 
+ void
+diff --git a/syscall.h b/syscall.h
+index 5f48d9b..bf44bc6 100644
+--- a/syscall.h
++++ b/syscall.h
+@@ -21,3 +21,4 @@
+ #define SYS_mkdir  20
+ #define SYS_close  21
+ #define SYS_hello  22
++#define SYS_lseek  23
+\ No newline at end of file
+diff --git a/sysfile.c b/sysfile.c
+index fa278a3..45dad47 100644
+--- a/sysfile.c
++++ b/sysfile.c
+@@ -447,3 +447,49 @@ int sys_hello(){
+ 	cprintf("hello\n");
+ 	return 0;
+ }
++
++int sys_lseek() {
++  int fd, offset, whence, newoff;;
++  struct file *f;
++
++  if(argfd(0, &fd, &f) < 0)
++    return -1;
++
++  if(argint(1, &offset) < 0)
++    return -1;
++
++  if(argint(2, &whence) < 0)
++    return -1;
++  //lseek is not supported on pipes.
++  if(f->type == FD_PIPE)
++    return -1;
++
++  switch(whence){
++  case SEEK_SET:
++    newoff = offset;
++    break;
++
++  case SEEK_CUR:
++    newoff = f->off + offset;
++    break;
++
++  case SEEK_END:
++    newoff = f->ip->size + offset;
++    break;
++
++  default:
++    return -1;
++  }
++
++  //file offset cannot be negative.
++  if(newoff < 0)
++    return -1;
++
++  //offsets beyond file size are not required.
++  if(newoff > f->ip->size)
++    return -1;
++
++  f->off = newoff;
++
++  return newoff;  
++}
+\ No newline at end of file
+diff --git a/trylseek.c b/trylseek.c
+new file mode 100644
+index 0000000..11a0768
+--- /dev/null
++++ b/trylseek.c
+@@ -0,0 +1,39 @@
++#include "types.h"
++#include "fcntl.h"
++#include "stat.h"
++#include "user.h"
++#include "fs.h"
++
++
++int
++main(int argc, char *argv[])
++{
++  int fd, i, n;
++  char buf[128];
++  fd = open(argv[1], O_RDONLY);
++  lseek(fd, 10, SEEK_SET);
++  n = read(fd, buf, 5);
++  for(i = 0; i < n; i++)
++    printf(1, "%c", buf[i]);
++  printf(1, "\n");
++
++
++  lseek(fd, 10, SEEK_CUR);
++  n = read(fd, buf, 5);
++  for(i = 0; i < n; i++)
++    printf(1, "%c", buf[i]);
++  printf(1, "\n");
++
++  lseek(fd, -5, SEEK_END); 
++  n = read(fd, buf, 5);
++  for(i = 0; i < n; i++)
++    printf(1, "%c", buf[i]);
++  printf(1, "\n");
++
++  lseek(fd, 5, SEEK_END); 
++  n = read(fd, buf, 5);
++  for(i = 0; i < n; i++)
++    printf(1, "%c", buf[i]);
++  printf(1, "\n");
++  exit();
++}
+diff --git a/user.h b/user.h
+index b7a8d72..e9e56f7 100644
+--- a/user.h
++++ b/user.h
+@@ -24,6 +24,7 @@ char* sbrk(int);
+ int sleep(int);
+ int uptime(void);
+ int hello(void); //basic sys call.
++int lseek(int fd, int offset, int whence); // lseek sys call.
+ 
+ // ulib.c
+ int stat(const char*, struct stat*);
+diff --git a/usys.S b/usys.S
+index 0072273..40e3e38 100644
+--- a/usys.S
++++ b/usys.S
+@@ -30,3 +30,4 @@ SYSCALL(sbrk)
+ SYSCALL(sleep)
+ SYSCALL(uptime)
+ SYSCALL(hello)
++SYSCALL(lseek)
+\ No newline at end of file

@@ -1,0 +1,61 @@
+\doxysection{mp.\+h}
+\hypertarget{mp_8h_source}{}\label{mp_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ See\ MultiProcessor\ Specification\ Version\ 1.[14]}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmp}{mp}}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ floating\ pointer}}
+\DoxyCodeLine{00004\ \ \ uchar\ signature[4];\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ "{}\_MP\_"{}}}
+\DoxyCodeLine{00005\ \ \ \textcolor{keywordtype}{void}\ *physaddr;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ phys\ addr\ of\ MP\ config\ table}}
+\DoxyCodeLine{00006\ \ \ uchar\ length;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1}}
+\DoxyCodeLine{00007\ \ \ uchar\ specrev;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [14]}}
+\DoxyCodeLine{00008\ \ \ uchar\ checksum;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ all\ bytes\ must\ add\ up\ to\ 0}}
+\DoxyCodeLine{00009\ \ \ uchar\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MP\ system\ config\ type}}
+\DoxyCodeLine{00010\ \ \ uchar\ imcrp;}
+\DoxyCodeLine{00011\ \ \ uchar\ reserved[3];}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmpconf}{mpconf}}\ \{\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ configuration\ table\ header}}
+\DoxyCodeLine{00015\ \ \ uchar\ signature[4];\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ "{}PCMP"{}}}
+\DoxyCodeLine{00016\ \ \ ushort\ length;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ total\ table\ length}}
+\DoxyCodeLine{00017\ \ \ uchar\ version;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [14]}}
+\DoxyCodeLine{00018\ \ \ uchar\ checksum;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ all\ bytes\ must\ add\ up\ to\ 0}}
+\DoxyCodeLine{00019\ \ \ uchar\ product[20];\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ product\ id}}
+\DoxyCodeLine{00020\ \ \ uint\ *oemtable;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OEM\ table\ pointer}}
+\DoxyCodeLine{00021\ \ \ ushort\ oemlength;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OEM\ table\ length}}
+\DoxyCodeLine{00022\ \ \ ushort\ entry;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ entry\ count}}
+\DoxyCodeLine{00023\ \ \ uint\ *lapicaddr;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ address\ of\ local\ APIC}}
+\DoxyCodeLine{00024\ \ \ ushort\ xlength;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extended\ table\ length}}
+\DoxyCodeLine{00025\ \ \ uchar\ xchecksum;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extended\ table\ checksum}}
+\DoxyCodeLine{00026\ \ \ uchar\ reserved;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmpproc}{mpproc}}\ \{\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ processor\ table\ entry}}
+\DoxyCodeLine{00030\ \ \ uchar\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ entry\ type\ (0)}}
+\DoxyCodeLine{00031\ \ \ uchar\ apicid;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ local\ APIC\ id}}
+\DoxyCodeLine{00032\ \ \ uchar\ version;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ local\ APIC\ verison}}
+\DoxyCodeLine{00033\ \ \ uchar\ flags;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CPU\ flags}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#define\ MPBOOT\ 0x02\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ This\ proc\ is\ the\ bootstrap\ processor.}}
+\DoxyCodeLine{00035\ \ \ uchar\ signature[4];\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CPU\ signature}}
+\DoxyCodeLine{00036\ \ \ uint\ feature;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ feature\ flags\ from\ CPUID\ instruction}}
+\DoxyCodeLine{00037\ \ \ uchar\ reserved[8];}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmpioapic}{mpioapic}}\ \{\ \ \ \ \ \ \ \textcolor{comment}{//\ I/O\ APIC\ table\ entry}}
+\DoxyCodeLine{00041\ \ \ uchar\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ entry\ type\ (2)}}
+\DoxyCodeLine{00042\ \ \ uchar\ apicno;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I/O\ APIC\ id}}
+\DoxyCodeLine{00043\ \ \ uchar\ version;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I/O\ APIC\ version}}
+\DoxyCodeLine{00044\ \ \ uchar\ flags;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I/O\ APIC\ flags}}
+\DoxyCodeLine{00045\ \ \ uint\ *addr;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I/O\ APIC\ address}}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ Table\ entry\ types}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ MPPROC\ \ \ \ 0x00\ \ }\textcolor{comment}{//\ One\ per\ processor}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ MPBUS\ \ \ \ \ 0x01\ \ }\textcolor{comment}{//\ One\ per\ bus}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ MPIOAPIC\ \ 0x02\ \ }\textcolor{comment}{//\ One\ per\ I/O\ APIC}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ MPIOINTR\ \ 0x03\ \ }\textcolor{comment}{//\ One\ per\ bus\ interrupt\ source}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ MPLINTR\ \ \ 0x04\ \ }\textcolor{comment}{//\ One\ per\ system\ interrupt\ source}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//PAGEBREAK!}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ Blank\ page.}}
+
+\end{DoxyCode}
