@@ -9,18 +9,23 @@
 #include "mmu.h"
 #include "spinlock.h"
 
+#define MAXFRAMES 57344 //PHYSTOP / PGSIZE = 57344
+
 void freerange(void *vstart, void *vend);
 extern char end[]; // first address after kernel loaded from ELF file
                    // defined by the kernel linker script in kernel.ld
 
-struct run {
-  struct run *next;
-};
+/* struct run {
+ * struct run *next;
+ * };
+ */
 
 struct {
   struct spinlock lock;
   int use_lock;
-  struct run *freelist;
+  //struct run *freelist;
+  char *free_frames[MAXFRAMES];
+  int cnt_free_frames;
 } kmem;
 
 // Initialization happens in two phases.
@@ -33,6 +38,7 @@ kinit1(void *vstart, void *vend)
 {
   initlock(&kmem.lock, "kmem");
   kmem.use_lock = 0;
+  kmem.cnt_free_frames = 0;
   freerange(vstart, vend);
 }
 
@@ -59,7 +65,7 @@ freerange(void *vstart, void *vend)
 void
 kfree(char *v)
 {
-  struct run *r;
+  // struct run *r;
 
   if((uint)v % PGSIZE || v < end || V2P(v) >= PHYSTOP)
     panic("kfree");
@@ -69,9 +75,15 @@ kfree(char *v)
 
   if(kmem.use_lock)
     acquire(&kmem.lock);
-  r = (struct run*)v;
-  r->next = kmem.freelist;
-  kmem.freelist = r;
+/* r = (struct run*)v;
+ * r->next = kmem.freelist;
+ * kmem.freelist = r;
+ */
+  if (kmem.cnt_free_frames >= MAXFRAMES)
+	  panic("kfree: Too many Frames !...");
+
+  kmem.free_frames[kmem.cnt_free_frames++] = v;
+
   if(kmem.use_lock)
     release(&kmem.lock);
 }
@@ -82,15 +94,21 @@ kfree(char *v)
 char*
 kalloc(void)
 {
-  struct run *r;
+  //struct run *r;
+  char *r = 0;
 
   if(kmem.use_lock)
     acquire(&kmem.lock);
-  r = kmem.freelist;
-  if(r)
-    kmem.freelist = r->next;
-  if(kmem.use_lock)
+  /* r = kmem.freelist;
+   * if(r)
+   * kmem.freelist = r->next;
+   */
+  if (kmem.cnt_free_frames > 0) {
+	  r = kmem.free_frames[--kmem.cnt_free_frames];
+  }
+
+	if(kmem.use_lock)
     release(&kmem.lock);
-  return (char*)r;
+  return r;
 }
 
