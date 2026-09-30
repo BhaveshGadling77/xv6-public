@@ -125,7 +125,7 @@ recover_from_log(void)
 void
 begin_op(void)
 {
-  acquire(&log.lock);
+  //acquire(&log.lock);
   while(1){
     if(log.committing){
       sleep(&log, &log.lock);
@@ -147,7 +147,7 @@ end_op(void)
 {
   int do_commit = 0;
 
-  acquire(&log.lock);
+  //acquire(&log.lock);
   log.outstanding -= 1;
   if(log.committing)
     panic("log.committing");
@@ -166,7 +166,7 @@ end_op(void)
     // call commit w/o holding locks, since not allowed
     // to sleep with locks.
     commit();
-    acquire(&log.lock);
+    //acquire(&log.lock);
     log.committing = 0;
     wakeup(&log);
     release(&log.lock);
@@ -220,7 +220,7 @@ log_write(struct buf *b)
   if (log.outstanding < 1)
     panic("log_write outside of trans");
 
-  acquire(&log.lock);
+  //acquire(&log.lock);
   for (i = 0; i < log.lh.n; i++) {
     if (log.lh.block[i] == b->blockno)   // log absorbtion
       break;

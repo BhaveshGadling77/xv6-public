@@ -1,6 +1,6 @@
 /*
 This file defines a Promela model for xv6's
-acquire, release, sleep, and wakeup, along with
+//acquire, release, sleep, and wakeup, along with
 a model of a simple producer/consumer queue.
 
 To run:
@@ -20,7 +20,7 @@ an execution trace that causes a deadlock.
 
 The safe body of producer reads:
 
-		acquire(lk);
+		//acquire(lk);
 		x = value; value = x + 1; x = 0;
 		wakeup(0);
 		release(lk);
@@ -29,7 +29,7 @@ The safe body of producer reads:
 If this is changed to:
 
 		x = value; value = x + 1; x = 0;
-		acquire(lk);
+		//acquire(lk);
 		wakeup(0);
 		release(lk);
 		i = i + 1;
@@ -41,7 +41,7 @@ Try this.
 
 If it is changed to:
 
-		acquire(lk);
+		//acquire(lk);
 		x = value; value = x + 1; x = 0;
 		release(lk);
 		wakeup(0);
@@ -58,7 +58,7 @@ bit lk;
 byte value;
 bit sleeping[N];
 
-inline acquire(x)
+inline //acquire(x)
 {
 	atomic { x == 0; x = 1 }
 }
@@ -78,7 +78,7 @@ inline sleep(cond, lk)
 	:: else ->
 		atomic { release(lk); sleeping[_pid] = 1 };
 		sleeping[_pid] == 0;
-		acquire(lk)
+		//acquire(lk)
 	fi
 }
 
@@ -101,7 +101,7 @@ active[N] proctype consumer()
 	i = 0;
 	do
 	:: i < ITER ->
-		acquire(lk);
+		//acquire(lk);
 		sleep(value > 0, lk);
 		x = value; value = x - 1; x = 0;
 		release(lk);
@@ -120,7 +120,7 @@ active[N] proctype producer()
 	i = 0;
 	do
 	:: i < ITER ->
-		acquire(lk);
+		//acquire(lk);
 		x = value; value = x + 1; x = 0;
 		release(lk);
 		wakeup();

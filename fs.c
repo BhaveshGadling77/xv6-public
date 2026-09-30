@@ -243,7 +243,7 @@ iget(uint dev, uint inum)
 {
   struct inode *ip, *empty;
 
-  acquire(&icache.lock);
+  //acquire(&icache.lock);
 
   // Is the inode already cached?
   empty = 0;
@@ -276,7 +276,7 @@ iget(uint dev, uint inum)
 struct inode*
 idup(struct inode *ip)
 {
-  acquire(&icache.lock);
+  //acquire(&icache.lock);
   ip->ref++;
   release(&icache.lock);
   return ip;
@@ -293,7 +293,7 @@ ilock(struct inode *ip)
   if(ip == 0 || ip->ref < 1)
     panic("ilock");
 
-  acquiresleep(&ip->lock);
+  //acquiresleep(&ip->lock);
 
   if(ip->valid == 0){
     bp = bread(ip->dev, IBLOCK(ip->inum, sb));
@@ -331,9 +331,9 @@ iunlock(struct inode *ip)
 void
 iput(struct inode *ip)
 {
-  acquiresleep(&ip->lock);
+  //acquiresleep(&ip->lock);
   if(ip->valid && ip->nlink == 0){
-    acquire(&icache.lock);
+    //acquire(&icache.lock);
     int r = ip->ref;
     release(&icache.lock);
     if(r == 1){
@@ -346,7 +346,7 @@ iput(struct inode *ip)
   }
   releasesleep(&ip->lock);
 
-  acquire(&icache.lock);
+  //acquire(&icache.lock);
   ip->ref--;
   release(&icache.lock);
 }

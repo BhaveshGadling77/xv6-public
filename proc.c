@@ -76,7 +76,7 @@ allocproc(void)
   struct proc *p;
   char *sp;
 
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
 
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
     if(p->state == UNUSED)
@@ -143,10 +143,10 @@ userinit(void)
   p->cwd = namei("/");
 
   // this assignment to p->state lets other cores
-  // run this process. the acquire forces the above
+  // run this process. the //acquire forces the above
   // writes to be visible, and the lock is also needed
   // because the assignment might not be atomic.
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
 
   p->state = RUNNABLE;
 
@@ -212,7 +212,7 @@ fork(void)
 
   pid = np->pid;
 
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
 
   np->state = RUNNABLE;
 
@@ -247,7 +247,7 @@ exit(void)
   end_op();
   curproc->cwd = 0;
 
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
 
   // Parent might be sleeping in wait().
   wakeup1(curproc->parent);
@@ -276,7 +276,7 @@ wait(void)
   int havekids, pid;
   struct proc *curproc = myproc();
   
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
   for(;;){
     // Scan through table looking for exited children.
     havekids = 0;
@@ -331,13 +331,13 @@ scheduler(void)
     sti();
 
     // Loop over process table looking for process to run.
-    acquire(&ptable.lock);
+    //acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
 
       // Switch to chosen process.  It is the process's job
-      // to release ptable.lock and then reacquire it
+      // to release ptable.lock and then re//acquire it
       // before jumping back to us.
       c->proc = p;
       switchuvm(p);
@@ -385,7 +385,7 @@ sched(void)
 void
 yield(void)
 {
-  acquire(&ptable.lock);  //DOC: yieldlock
+  //acquire(&ptable.lock);  //DOC: yieldlock
   myproc()->state = RUNNABLE;
   sched();
   release(&ptable.lock);
@@ -413,7 +413,7 @@ forkret(void)
 }
 
 // Atomically release lock and sleep on chan.
-// Reacquires lock when awakened.
+// Re//acquires lock when awakened.
 void
 sleep(void *chan, struct spinlock *lk)
 {
@@ -425,14 +425,14 @@ sleep(void *chan, struct spinlock *lk)
   if(lk == 0)
     panic("sleep without lk");
 
-  // Must acquire ptable.lock in order to
+  // Must //acquire ptable.lock in order to
   // change p->state and then call sched.
   // Once we hold ptable.lock, we can be
   // guaranteed that we won't miss any wakeup
   // (wakeup runs with ptable.lock locked),
   // so it's okay to release lk.
   if(lk != &ptable.lock){  //DOC: sleeplock0
-    acquire(&ptable.lock);  //DOC: sleeplock1
+    //acquire(&ptable.lock);  //DOC: sleeplock1
     release(lk);
   }
   // Go to sleep.
@@ -444,10 +444,10 @@ sleep(void *chan, struct spinlock *lk)
   // Tidy up.
   p->chan = 0;
 
-  // Reacquire original lock.
+  // Re//acquire original lock.
   if(lk != &ptable.lock){  //DOC: sleeplock2
     release(&ptable.lock);
-    acquire(lk);
+    //acquire(lk);
   }
 }
 
@@ -468,7 +468,7 @@ wakeup1(void *chan)
 void
 wakeup(void *chan)
 {
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
   wakeup1(chan);
   release(&ptable.lock);
 }
@@ -481,7 +481,7 @@ kill(int pid)
 {
   struct proc *p;
 
-  acquire(&ptable.lock);
+  //acquire(&ptable.lock);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->pid == pid){
       p->killed = 1;

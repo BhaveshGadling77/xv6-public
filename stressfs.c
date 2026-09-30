@@ -1,4 +1,4 @@
-// Demonstrate that moving the "acquire" in iderw after the loop that
+// Demonstrate that moving the "//acquire" in iderw after the loop that
 // appends to the idequeue results in a race.
 
 // For this to work, you should also add a spin within iderw's

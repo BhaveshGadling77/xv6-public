@@ -68,7 +68,7 @@ kfree(char *v)
   memset(v, 1, PGSIZE);
 
   if(kmem.use_lock)
-    acquire(&kmem.lock);
+    //acquire(&kmem.lock);
   r = (struct run*)v;
   r->next = kmem.freelist;
   kmem.freelist = r;
@@ -85,7 +85,7 @@ kalloc(void)
   struct run *r;
 
   if(kmem.use_lock)
-    acquire(&kmem.lock);
+    //acquire(&kmem.lock);
   r = kmem.freelist;
   if(r)
     kmem.freelist = r->next;

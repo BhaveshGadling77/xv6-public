@@ -60,7 +60,7 @@ cprintf(char *fmt, ...)
 
   locking = cons.locking;
   if(locking)
-    acquire(&cons.lock);
+    //acquire(&cons.lock);
 
   if (fmt == 0)
     panic("null fmt");
@@ -193,7 +193,7 @@ consoleintr(int (*getc)(void))
 {
   int c, doprocdump = 0;
 
-  acquire(&cons.lock);
+  //acquire(&cons.lock);
   while((c = getc()) >= 0){
     switch(c){
     case C('P'):  // Process listing.
@@ -240,7 +240,7 @@ consoleread(struct inode *ip, char *dst, int n)
 
   iunlock(ip);
   target = n;
-  acquire(&cons.lock);
+  //acquire(&cons.lock);
   while(n > 0){
     while(input.r == input.w){
       if(myproc()->killed){
@@ -276,7 +276,7 @@ consolewrite(struct inode *ip, char *buf, int n)
   int i;
 
   iunlock(ip);
-  acquire(&cons.lock);
+  //acquire(&cons.lock);
   for(i = 0; i < n; i++)
     consputc(buf[i] & 0xff);
   release(&cons.lock);

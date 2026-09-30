@@ -63,14 +63,14 @@ bget(uint dev, uint blockno)
 {
   struct buf *b;
 
-  acquire(&bcache.lock);
+  //acquire(&bcache.lock);
 
   // Is the block already cached?
   for(b = bcache.head.next; b != &bcache.head; b = b->next){
     if(b->dev == dev && b->blockno == blockno){
       b->refcnt++;
       release(&bcache.lock);
-      acquiresleep(&b->lock);
+      //acquiresleep(&b->lock);
       return b;
     }
   }
@@ -85,7 +85,7 @@ bget(uint dev, uint blockno)
       b->flags = 0;
       b->refcnt = 1;
       release(&bcache.lock);
-      acquiresleep(&b->lock);
+      //acquiresleep(&b->lock);
       return b;
     }
   }
@@ -125,7 +125,7 @@ brelse(struct buf *b)
 
   releasesleep(&b->lock);
 
-  acquire(&bcache.lock);
+  //acquire(&bcache.lock);
   b->refcnt--;
   if (b->refcnt == 0) {
     // no one is waiting for it.

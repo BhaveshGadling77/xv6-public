@@ -79,7 +79,7 @@ before calling swtch, and perhaps it should.
 The x86's processor-ordering memory model 
 matches spin locks well, so no explicit memory
 synchronization instructions are required in
-acquire and release.  
+//acquire and release.  
 
 Consider two sequences of code on different CPUs:
 
@@ -90,7 +90,7 @@ release(lk);
 and
 
 CPU1
-acquire(lk);
+//acquire(lk);
 B;
 
 We want to make sure that:
@@ -135,6 +135,6 @@ before the return statement.  So it's not safe to just
 setting np->state isn't safe, since the compiler is
 allowed to re-order statements.
 
-The real code saves a copy of np->pid, then acquires a lock
-around the write to np->state. The acquire() prevents the
+The real code saves a copy of np->pid, then //acquires a lock
+around the write to np->state. The //acquire() prevents the
 compiler from re-ordering.
