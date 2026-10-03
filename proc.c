@@ -88,6 +88,7 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->priority = 5;
 
   release(&ptable.lock);
 
@@ -311,6 +312,15 @@ wait(void)
   }
 }
 
+static uint
+get_quantum(uint priority)
+{
+  if(priority < 1 || priority > 10)
+    return -1;
+
+  return 10000000 * priority;
+}
+
 //PAGEBREAK: 42
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
@@ -329,12 +339,14 @@ scheduler(void)
   for(;;){
     // Enable interrupts on this processor.
     sti();
-
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
+
+	  // Set timer according to process priority.
+      lapicsettimer(get_quantum(p->priority));
 
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it

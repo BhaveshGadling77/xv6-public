@@ -227,3 +227,8 @@ cmostime(struct rtcdate *r)
   *r = t1;
   r->year += 2000;
 }
+void
+lapicsettimer(uint ticks)
+{
+  lapicw(TICR, ticks);
+}
